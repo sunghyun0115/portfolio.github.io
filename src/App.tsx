@@ -511,7 +511,7 @@ const ProjectCard = ({ project, onImageClick, id }: { project: any, onImageClick
               onClick={() => onImageClick(img)}
             >
               <img 
-                src={img} 
+                src={img.startsWith('http') ? img : `${import.meta.env.BASE_URL}${img.startsWith('/') ? img.slice(1) : img}`} 
                 alt={`${project.title} screenshot ${i+1}`} 
                 className="w-full h-full object-cover grayscale group-hover/img:grayscale-0 transition-all duration-700 scale-105 group-hover/img:scale-100"
                 referrerPolicy="no-referrer"
@@ -1017,7 +1017,7 @@ export default function App() {
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={zoomedImage}
+                src={zoomedImage?.startsWith('http') ? zoomedImage : `${import.meta.env.BASE_URL}${zoomedImage?.startsWith('/') ? zoomedImage.slice(1) : zoomedImage}`}
                 alt="Zoomed view"
                 className="max-w-full max-h-[90vh] object-contain"
                 referrerPolicy="no-referrer"
