@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans KR", sans-serif;
+  --font-serif: "Gowun Batang", serif;
+  --font-display: "Gowun Batang", serif;
+  --font-accent: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-brand-primary: #3e2723; /* Dark Wood */
+  --color-brand-secondary: #f5f2ed; /* Old Paper */
+  --color-brand-accent: #8d6e63; /* Warm Brown */
+  --color-ink: #1a1a1a;
+  --color-card-bg: #ffffff;
+  --color-tag-bg: #fffdfa;
+
+  --color-dark-bg: #1c1c1c; /* Intermediate Grey */
+  --color-dark-paper: #2b1d1a; /* Dark Wood Brown */
+  --color-dark-text: #f5f2ed;
+}
+
+.dark {
+  --color-ink: #f5f2ed;
+  --color-brand-secondary: #2b1d1a;
+  --color-card-bg: #33221f;
+  --color-tag-bg: #3d2b27;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-secondary text-ink antialiased transition-colors duration-300;
+    background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  }
+
+  .dark body {
+    background-color: #1c1c1c;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-ink transition-colors duration-300;
+  }
+
+  p {
+    @apply transition-colors duration-300;
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark p {
+    color: #f5f2ed;
+  }
+}
+
+.paper-card {
+  background-color: var(--color-card-bg);
+  @apply border border-[#d3ccba] shadow-[2px_2px_0_0_#d3ccba] transition-all duration-300;
+}
+
+.dark .paper-card {
+  @apply border-[#3e2723] shadow-[2px_2px_0_0_#3e2723];
+}
+
+.ink-border {
+  @apply border border-ink/20;
+}
+
+.dark .ink-border {
+  @apply border-brand-secondary/20;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.book-shadow {
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.2), inset 1px 1px 0 rgba(255,255,255,0.1);
+}
+
+.catalog-card {
+  background-color: var(--color-tag-bg);
+  @apply border-l-4 border-brand-accent p-6 relative transition-colors duration-300;
+  background-image: linear-gradient(#e5e0d5 1px, transparent 1px);
+  background-size: 100% 2.5rem;
+}
+
+.dark .catalog-card {
+  @apply border-brand-accent;
+  background-image: linear-gradient(#333333 1px, transparent 1px);
+}
